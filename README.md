@@ -14,14 +14,6 @@ A beginner-friendly student assignment dashboard inspired by the supplied refere
 - Local persistence in the browser (no database setup required)
 - Sample assignments to demonstrate the dashboard immediately
 
-## Run in VS Code
-1. Extract the ZIP file.
-2. Open the `student_assignment_dashboard` folder in VS Code.
-3. Open `index.html`.
-4. Recommended: install the **Live Server** extension in VS Code.
-5. Right-click `index.html` → **Open with Live Server**.
-
-You can also open `index.html` directly in a browser. No Python packages or npm commands are required.
 
 ## Data storage
 Assignments are stored in your browser's local storage. Data stays in that browser on that computer. Clearing browser site data may remove saved tasks.
