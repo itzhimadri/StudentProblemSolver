@@ -6,7 +6,7 @@ StudyFlow is a modern, responsive student assignment dashboard designed to help 
 
 Built with HTML, CSS, and vanilla JavaScript, StudyFlow provides a clean and intuitive interface that makes academic planning simpler and more productive.
 
-🌐 **Live Demo:** [Open StudyFlow](https://itzhimadri.github.io/StudentProblemSolver/)
+🌐 **Live Demo:** [Open StudyFlow](file:///c%3A/Users/USER/OneDrive/Desktop/student_assignment_dashboard/index.html)
 
 📦 **Repository:** [StudentProblemSolver on GitHub](https://github.com/itzhimadri/StudentProblemSolver)
 
