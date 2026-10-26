@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # StudyFlow — Student Assignment Dashboard
 
 A beginner-friendly student assignment dashboard inspired by the supplied reference image. Built with HTML, CSS, and vanilla JavaScript. It runs locally in a browser and saves tasks with `localStorage`.
@@ -28,3 +29,7 @@ Assignments are stored in your browser's local storage. Data stays in that brows
 ## Notes
 - The dashboard starts with sample assignments for demonstration. You can edit or delete them.
 - This is a front-end local prototype, not a multi-user cloud app. A backend and database would be needed for accounts and cross-device syncing.
+=======
+# StudentProblemSolver
+A student assignment dashboard to manage tasks, deadlines, and academic progress.
+>>>>>>> 2cce1c241995fa20e9d68267253fc008cf0c0ee8
