@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Assignment Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-mark">S</div><span>StudyFlow</span></div>
+      <div class="workspace-label">WORKSPACE</div>
+      <nav class="nav">
+        <button class="nav-link active" data-view="dashboard"><span>▦</span> Dashboard</button>
+        <button class="nav-link" data-view="assignments"><span>☷</span> All Assignments <span class="nav-count" id="sideCount">0</span></button>
+        <button class="nav-link" data-view="calendar"><span>▦</span> Calendar</button>
+        <button class="nav-link" data-view="completed"><span>✓</span> Completed</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="tip-card">
+          <div class="tip-icon">✦</div>
+          <strong>Small steps, big results.</strong>
+          <p>Keep your tasks organized and make time for what matters.</p>
+        </div>
+        <button class="nav-link" id="settingsBtn"><span>⚙</span> Settings</button>
+        <div class="profile-mini"><div class="avatar">H</div><div><strong>Himadri</strong><small>Student account</small></div><span class="dots">•••</span></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="mobile-brand"><div class="brand-mark">S</div> StudyFlow</div>
+        <div class="breadcrumb">Workspace <span>/</span> <b id="breadcrumbCurrent">Dashboard</b></div>
+        <div class="top-actions">
+          <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search assignments..."></label>
+          <button class="icon-button" id="notificationBtn" aria-label="Notifications">♧<i class="notification-dot"></i></button>
+          <button class="user-button" id="profileBtn"><span class="avatar small">H</span><span>Himadri</span><span class="chevron">⌄</span></button>
+        </div>
+      </header>
+
+      <section class="welcome-row">
+        <div><p class="eyebrow" id="todayLabel">YOUR STUDY SPACE</p><h1>Good morning, Himadri <span class="sun">☀</span></h1><p class="muted">Here's what's due and what's coming up.</p></div>
+        <button class="primary-button" id="addTaskTop"><span>＋</span> Add assignment</button>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat-card blue"><div class="stat-top"><span>Total Assignments</span><span class="stat-icon">▤</span></div><div class="stat-value" id="totalStat">0</div><div class="stat-foot"><span class="dot blue-dot"></span> All your tasks</div></article>
+        <article class="stat-card pink"><div class="stat-top"><span>Due Today</span><span class="stat-icon">◷</span></div><div class="stat-value" id="todayStat">0</div><div class="stat-foot"><span class="dot pink-dot"></span> Needs attention</div></article>
+        <article class="stat-card yellow"><div class="stat-top"><span>Upcoming</span><span class="stat-icon">▣</span></div><div class="stat-value" id="upcomingStat">0</div><div class="stat-foot"><span class="dot yellow-dot"></span> Coming soon</div></article>
+        <article class="stat-card mint"><div class="stat-top"><span>Completed</span><span class="stat-icon">✓</span></div><div class="stat-value" id="completedStat">0</div><div class="stat-foot"><span class="dot mint-dot"></span> Great progress!</div></article>
+      </section>
+
+      <section class="dashboard-grid" id="dashboardView">
+        <div class="left-column">
+          <article class="panel">
+            <div class="panel-heading"><div><h2><span class="heading-icon violet">◷</span> Today's Assignments</h2><p class="panel-subtitle">Your priorities for today</p></div><button class="text-button" data-view="assignments">View all <span>→</span></button></div>
+            <div class="task-list" id="todayTasks"></div>
+            <div class="empty-state hidden" id="todayEmpty"><span>☀</span><strong>Nothing due today</strong><p>Enjoy the breathing room or get ahead on upcoming work.</p></div>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><div><h2><span class="heading-icon green">▣</span> Upcoming Assignments</h2><p class="panel-subtitle">Plan ahead and stay on track</p></div><button class="text-button" data-view="assignments">View all <span>→</span></button></div>
+            <div class="task-list" id="upcomingTasks"></div>
+            <div class="empty-state hidden" id="upcomingEmpty"><span>✦</span><strong>No upcoming assignments</strong><p>Add a task and it will appear here.</p></div>
+          </article>
+        </div>
+        <div class="right-column">
+          <article class="panel calendar-panel">
+            <div class="calendar-header"><h2><span class="heading-icon navy">▦</span><span id="monthTitle">October 2026</span></h2><div class="calendar-arrows"><button id="prevMonth" aria-label="Previous month">‹</button><button id="nextMonth" aria-label="Next month">›</button></div></div>
+            <div class="calendar-grid calendar-weekdays"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+            <div class="calendar-grid" id="calendarDays"></div>
+            <div class="calendar-legend"><span><i class="legend-dot blue-dot"></i> Assignment</span><span><i class="legend-dot yellow-dot"></i> Deadline</span></div>
+          </article>
+          <article class="panel reminders-panel">
+            <div class="panel-heading"><div><h2><span class="heading-icon blue">♧</span> Upcoming Reminders</h2><p class="panel-subtitle">Don't miss a deadline</p></div><button class="text-button" data-view="assignments">View all <span>→</span></button></div>
+            <div class="reminder-list" id="reminderList"></div>
+            <div class="empty-state hidden" id="reminderEmpty"><strong>All clear!</strong><p>No pending reminders.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel full-view hidden" id="listView">
+        <div class="panel-heading list-view-heading"><div><h2 id="listViewTitle">All Assignments</h2><p class="panel-subtitle">Manage your coursework in one place.</p></div><div class="filters"><select id="subjectFilter"><option value="all">All subjects</option></select><select id="statusFilter"><option value="all">All status</option><option value="Pending">Pending</option><option value="In Progress">In Progress</option><option value="Completed">Completed</option></select></div></div>
+        <div class="table-wrap"><table><thead><tr><th>Assignment</th><th>Subject</th><th>Deadline</th><th>Priority</th><th>Status</th><th>Actions</th></tr></thead><tbody id="allTaskRows"></tbody></table></div>
+        <div class="empty-state hidden" id="listEmpty"><strong>No assignments found</strong><p>Try changing your filters or add an assignment.</p></div>
+      </section>
+      <section class="panel full-view hidden" id="calendarOnlyView"><div class="panel-heading"><div><h2>Calendar</h2><p class="panel-subtitle">Select a date to see assignments due that day.</p></div></div><div id="selectedDateTasks" class="selected-date-tasks"></div></section>
+    </main>
+  </div>
+
+  <button class="floating-add" id="floatingAdd" aria-label="Add assignment">＋</button>
+
+  <div class="modal-backdrop hidden" id="taskModal">
+    <form class="modal" id="taskForm">
+      <div class="modal-heading"><div><p class="eyebrow">STAY ORGANIZED</p><h2 id="modalTitle">Add assignment</h2></div><button type="button" class="close-button" id="closeModal">×</button></div>
+      <input type="hidden" id="taskId">
+      <label>Assignment title<input id="taskTitle" required maxlength="100" placeholder="e.g. Database Design Assignment"></label>
+      <div class="form-row"><label>Subject<input id="taskSubject" required placeholder="e.g. DBMS"></label><label>Deadline<input id="taskDate" type="date" required></label></div>
+      <div class="form-row"><label>Due time<input id="taskTime" type="time" value="17:00"></label><label>Priority<select id="taskPriority"><option>Low</option><option selected>Medium</option><option>High</option></select></label></div>
+      <label>Status<select id="taskStatus"><option>Pending</option><option>In Progress</option><option>Completed</option></select></label>
+      <label>Notes <textarea id="taskNotes" rows="3" placeholder="Optional details..."></textarea></label>
+      <div class="modal-actions"><button type="button" class="secondary-button" id="cancelModal">Cancel</button><button class="primary-button" type="submit">Save assignment</button></div>
+    </form>
+  </div>
+  <div class="toast hidden" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
